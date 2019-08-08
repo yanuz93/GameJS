@@ -1,3 +1,5 @@
+
+
 /*
  id_p = ID element yang memuat <canvas>
  im = object (atau string URL) berupa gambar
@@ -94,16 +96,17 @@ function PuzzleImg(id_p, im, cols, rows, wg, hg){
       }
     });
 
-    //click to solve puzzle
+    //klik untuk menyelesaikan puzzle
     document.getElementById(id_solv).addEventListener('click', function(){
       if(id_solv !=''){ solv =-1; drawTL(posisi_potongan);}
     });
   }
 
-  //get image pieces from $img and mengatur it in $posisi_potongan
+  //mengambil gambar ($img) and mengatur $posisi_potongan
   function setImP(){
     for(var i=0; i<cols * rows; ++i) {
-      var c = Math.floor(i /rows);  var r = i %rows;  //current column /rom of piece in img
+      var c = Math.floor(i /rows);
+      var r = i %rows; //posisi gambar dalam canvas
       //add in $posisi_potongan object with positions of pieces in image
       posisi_potongan.push({px:c *ukuran_potongan.w, py:r * ukuran_potongan.h, tx:c *ukuran_wadah.w, ty:r *ukuran_wadah.h, id:i, rotate: 0});
     }
@@ -114,10 +117,11 @@ function PuzzleImg(id_p, im, cols, rows, wg, hg){
   //mengatur wadah in $posisi_wadah from $posisi_potongan
   function setTL(){
     for(var i=0; i<posisi_potongan.length; i++){
-      var c = Math.floor(i /rows);  var r = i %rows;  //current column /rom of tile in canvas
+      var c = Math.floor(i /rows);
+      var r = i %rows;  //posisi wadah dalam canvas
       posisi_wadah[posisi_potongan[i].id] = {px:posisi_potongan[i].px, py:posisi_potongan[i].py, tx:c *ukuran_wadah.w, ty:r *ukuran_wadah.h, ord:i};
     }
-    drawTL(posisi_wadah);  //draw wadah in canvas
+    drawTL(posisi_wadah);  //gambar wadah di canvas
   }
 
   //draw wadah from $tls
@@ -128,7 +132,7 @@ function PuzzleImg(id_p, im, cols, rows, wg, hg){
     checkPuzzle();  //mengecek jika  puzzle komplit
   }
 
-  //mengecek jika  wadah are in correct order, else 0
+  //mengecek kesesuaian puzzle dengan wadah
   function checkPuzzle(){
     var re =1;
     if(solv ==0){
@@ -139,7 +143,6 @@ function PuzzleImg(id_p, im, cols, rows, wg, hg){
     if(re ==1){
       cnt.drawImage(img, 0, 0, width, height);
 
-      //if selesai manually (-1 is auto) calls solved()
       if(solv ==0){
 	solv =1;
 	this.solved();
@@ -154,7 +157,7 @@ function PuzzleImg(id_p, im, cols, rows, wg, hg){
     cnt.strokeRect(posisi_wadah[id].tx +1, posisi_wadah[id].ty +1, ukuran_wadah.w -2, ukuran_wadah.h -2);
   }
 
-  //remove button that solves the puzzle
+  //menghilangkan tombol solve singkat
   //this.delSolve = function(){ document.getElementById(id_solv).outerHTML =''; id_solv ='';}
 
   //memanggil fungsi setelah puzzle komplit
@@ -188,3 +191,40 @@ function imgToPuzzle(slc, cols, rows, solve, callback){
     if(callback) ob_puz.selesai = callback;
   }
 }
+
+var SetDate = new Date().getTime() + 12000;
+var x = setInterval(function() {
+ 
+    // Get todays date and time
+    var now = new Date().getTime();
+    
+    // Find the distance between now and the count down date
+    var distance = SetDate - now;
+    
+    // Time calculations for days, hours, minutes and seconds
+    var hari = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var jam = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var menit = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var detik = Math.floor((distance % (1000 * 60)) / 1000);
+    
+    // Output the result in an element with id="demo"
+    if(hari!==0){
+        var hasil = hari + " Hari, " + jam + " : "+ menit + " : " + detik ;
+    }else if(jam!==0){
+        var hasil = jam + " : "+ menit + " : " + detik ;
+    }else if(menit!==0){
+        var hasil = menit + " : " + detik ;
+    }else if (detik!==0){
+        var hasil = detik ;
+    }
+    document.getElementById("demo").innerHTML = hasil;
+    
+    // If the count down is over, write some text 
+    if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("demo").innerHTML = "Anda kalah"
+		alert('Waktu Habis!'); {
+		scramble();
+		}
+    }
+}, 1000);
