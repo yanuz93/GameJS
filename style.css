@@ -4,6 +4,8 @@ body {
   }
   
 canvas {
+    width: 500px;
+    height: 500px;;
     border: 5px solid blue;
     border-radius: 25px;
     margin: auto;
@@ -16,8 +18,6 @@ button {
     margin-left: 15px;
     margin-top: 20px;
 }
-
-
 
 a {
     text-decoration: none;
@@ -150,7 +150,6 @@ h1{
   90%{color: DodgerBlue;}
 	100%{color: orange;}
 }
-
 
 /* Shape Diamond */
 /* .diamond-narrow {

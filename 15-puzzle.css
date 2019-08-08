@@ -3,7 +3,6 @@ body {
     background-image: url(https://i.gifer.com/76YS.gif)
   }
 
-
 .kotak {;
 	padding:10px;
 	width: 500px; 
@@ -121,8 +120,6 @@ h1 {
 	 100%{color: orange;}
  }
 
-
-
 ::selection {background: transparent;}
 p{margin: 0; font: 12px/150% Arial; text-align: center; color: #888;}
 p a{color: #888;}
@@ -216,3 +213,4 @@ p a{color: #888;}
 	display:block;
 	margin:-25px auto 1px auto;
 	}
+}
