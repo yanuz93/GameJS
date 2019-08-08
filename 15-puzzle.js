@@ -1,3 +1,41 @@
+audio = new Audio();
+audio.src="img/musik.mp3";
+audio.loop= true;
+audio.play(); 
+
+// Wrap every letter in a span
+// var textWrapper = document.querySelector('.ml1 .letters');
+// textWrapper.innerHTML = textWrapper.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>");
+
+// anime.timeline({loop: true})
+//   .add({
+//     targets: '.ml1 .letter',
+//     scale: [0.3,1],
+//     opacity: [0,1],
+//     translateZ: 0,
+//     easing: "easeOutExpo",
+//     duration: 600,
+//     delay: function(el, i) {
+//       return 70 * (i+1)
+//     }
+//   }).add({
+//     targets: '.ml1 .line',
+//     scaleX: [0,1],
+//     opacity: [0.5,1],
+//     easing: "easeOutExpo",
+//     duration: 700,
+//     offset: '-=875',
+//     delay: function(el, i, l) {
+//       return 80 * (l - i);
+//     }
+//   }).add({
+//     targets: '.ml1',
+//     opacity: 0,
+//     duration: 1000,
+//     easing: "easeOutExpo",
+//     delay: 1000
+//   });
+
 // Wrap every letter in a span
 var textWrapper = document.querySelector('.ml1 .letters');
 textWrapper.innerHTML = textWrapper.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>");
@@ -267,3 +305,40 @@ anime.timeline({loop: true})
 	}
 
 }());
+
+var SetDate = new Date().getTime() + 2000;
+var x = setInterval(function() {
+ 
+    // Get todays date and time
+    var now = new Date().getTime();
+    
+    // Find the distance between now and the count down date
+    var distance = SetDate - now;
+    
+    // Time calculations for days, hours, minutes and seconds
+    var hari = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var jam = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var menit = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var detik = Math.floor((distance % (1000 * 60)) / 1000);
+    
+    // Output the result in an element with id="demo"
+    if(hari!==0){
+        var hasil = hari + " Hari, " + jam + " : "+ menit + " : " + detik ;
+    }else if(jam!==0){
+        var hasil = jam + " : "+ menit + " : " + detik ;
+    }else if(menit!==0){
+        var hasil = menit + " : " + detik ;
+    }else if (detik!==0){
+        var hasil = detik ;
+    }
+    document.getElementById("demo").innerHTML = hasil;
+    
+    // If the count down is over, write some text 
+    if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("demo").innerHTML = "Anda kalah"
+		alert('Waktu Habis!'); {
+		scramble();
+		}
+    }
+}, 1000);
