@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<title>Puzzle Ceria</title>
+    <link rel="stylesheet" href="15-puzzle.css">
+    <script src="logic.js"></script>    
+</head>
+<body>
+    <div class="kotak text-center">
+            <h1 class="rainbow">TIMER</h1>
+            <h1 id="demo"></h1>
+    </div>
+        <br><br>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6" style="padding-right: 0;">
+<img src="spring_dream.jpg" width="580" height="435" alt="Spring Dream" class="imgs" />
+            </div>
+        </div>
+    </div>
+
+<style>
+body{
+background:#fbfbfe;
+text-align:center;
+background-image: url(https://i.gifer.com/76YS.gif)
+
+}
+h1 {
+margin:5px auto;
+font-size:22px;
+}
+h2 {
+margin:0 auto 4px auto;
+font-size:18px;
+}
+#dv1, #dv2 {
+display:inline-block;
+margin:5px 1px;
+border:1px dashed #333;
+text-align:center;
+padding:3px;
+}
+blockquote {
+text-align:left;
+}
+pre {margin:1px 1px 9px 1px;background:#fefebb;font-size:15px; font-weight:bold;text-align:left;color:blue;padding:3px 4px;}
+</style>
+<script>
+//<![CDATA[
+//function called when the puzzle is completed
+var solved = function(){
+  alert('Congratulations');
+}
+
+//converts into puzzle all the images with class "imgs" in Div elements
+//sets 3 columns and 4 rows, and value 0 for the 4th argument to Not display the button that solves the puzzle (1 to show it)
+//calls the solved() function when the puzzle is completed
+imgToPuzzle('div .imgs', 5, 5, 0, solved);
+// ]]>
+</script>
+
+</body>
+</html>
